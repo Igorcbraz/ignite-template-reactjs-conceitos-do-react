@@ -3,6 +3,7 @@ import { useState } from 'react'
 import '../styles/tasklist.scss'
 
 import { FiTrash, FiCheckSquare } from 'react-icons/fi'
+import { isMetaProperty } from '@babel/types';
 
 interface Task {
   id: number;
@@ -15,15 +16,36 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   function handleCreateNewTask() {
-    // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
+    if(newTaskTitle !== ''){
+      const randomNumber = Math.floor(Math.random() * 100); // Generates random integer from 0 to 99:
+      const newTask: Task = {
+        id: randomNumber,
+        title: `${newTaskTitle}`,
+        isComplete: false
+      }
+
+      setTasks(task => [...tasks, newTask]) //"Extends" old tasks array and add newTask item
+    } else {
+      alert('Task cannot be empty !')
+    }
   }
 
   function handleToggleTaskCompletion(id: number) {
-    // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
+    const taskIndex = tasks.findIndex(task => task.id === id);
+    
+    let newTaskArray = [...tasks]; //Clone old tasks array
+    newTaskArray[taskIndex].isComplete = !newTaskArray[taskIndex].isComplete; //Invert the boolean value from task with id = params id 
+
+    setTasks(newTaskArray); //Set the new array(newTaskArray) to Tasks state
   }
 
   function handleRemoveTask(id: number) {
-    // Remova uma task da listagem pelo ID
+    const taskIndex = tasks.findIndex(task => task.id === id);
+
+    let newTaskArray = [...tasks]; //Clone old tasks array
+    newTaskArray.splice(taskIndex, 1); //Remove 1 item with index = taskIndex
+
+    setTasks(newTaskArray) //Set the new array(newTaskArray) to Tasks state
   }
 
   return (

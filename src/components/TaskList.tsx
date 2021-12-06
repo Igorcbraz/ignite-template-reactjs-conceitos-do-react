@@ -17,14 +17,15 @@ export function TaskList() {
 
   function handleCreateNewTask() {
     if(newTaskTitle !== ''){
-      const randomNumber = Math.floor(Math.random() * 100); // Generates random integer from 0 to 99:
+      const randomNumber = Math.floor(Math.random() * 1000); // Generates random integer from 0 to 99:
       const newTask: Task = {
         id: randomNumber,
         title: `${newTaskTitle}`,
         isComplete: false
       }
 
-      setTasks(task => [...tasks, newTask]) //"Extends" old tasks array and add newTask item
+      setTasks(task => [...tasks, newTask]); //"Extends" old tasks array and add newTask item
+      setNewTaskTitle('');
     } else {
       alert('Task cannot be empty !')
     }

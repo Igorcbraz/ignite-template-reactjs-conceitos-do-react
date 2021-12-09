@@ -1,6 +1,6 @@
 <!-- Começo/ Apresentação -->
 <h1 align="center">📝 To-Do List 📌</h1>
-<h3 align="center"> 📌 <a href="https://igorcbraz.github.io/Calculadora/" target="_blank">To-Do List</a> Feita no desafio Ignite ReactJs na Rocketseat 📝</h3>
+<h3 align="center"> 📌 <a href="https://igorcbraz.github.io/ignite-todo-list/" target="_blank">To-Do List</a> Feita no desafio Ignite ReactJs na Rocketseat 📝</h3>
 
 <!-- Imagens do Projeto -->
 <div align="center">

@@ -1,14 +1,18 @@
 {
+  "homepage": "http://igorcbraz.github.io/ignite-todo-list",
   "name": "01-github-explorer",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "webpack serve",
     "build": "cross-env NODE_ENV=production webpack",
     "test": "jest --watchAll"
   },
   "dependencies": {
+    "gh-pages": "^3.2.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0"
